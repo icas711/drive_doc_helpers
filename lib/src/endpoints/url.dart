@@ -2,7 +2,7 @@ import '../dto/document_types.dart';
 import '../route_enums/route_utils.dart';
 enum Url {
   dev(
-      'https://check-car.itjn.ru:8079/realms/ep/protocol/openid-connect/token',
+      'https://check-car.itjn.ru:8079/realms/drive-doc/protocol/openid-connect/token',
       'https://check-car.itjn.ru:8090'),
   prod(
       'https://check-car.itjn.ru:8079/realms/drive-doc/protocol/openid-connect/token',

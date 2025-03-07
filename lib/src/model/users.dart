@@ -39,7 +39,7 @@ class User {
   factory User.init() => const User(
         id: '',
         title: '',
-        externalId: '',
+        externalId: null,
         email: '',
         role: '',
       );
@@ -70,7 +70,7 @@ class User {
     return User(
       id: map['id'] as String,
       title: map['title'] as String,
-      externalId: map['externalId'] ?? '',
+      externalId: map['externalId'],
       email: map['email'] as String,
       role: map['role'] as String,
     );

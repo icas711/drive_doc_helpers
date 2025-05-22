@@ -1,17 +1,18 @@
+
+
 import '../dto/application_dto.dart';
 import '../dto/application_event.dart';
-import '../dto/car_dto.dart';
+import '../dto/car_frontend_dto.dart';
 import '../dto/document_types.dart';
 import 'package:collection/collection.dart';
 
-import 'car_entity.dart';
 
 class ApplicationEntity {
   final String id;
   final String title;
   final String? description;
   final DocumentType? type;
-  final CarEntity? car;
+  final CarFrontendDto? car;
   final String creator;
   final ApplicationEvent? status;
 
@@ -36,7 +37,7 @@ class ApplicationEntity {
       );
 
   factory ApplicationEntity.fromDto(
-      ApplicationDto dto, List<DocumentType> types, List<CarEntity> cars) {
+      ApplicationDto dto, List<DocumentType> types, List<CarFrontendDto> cars) {
     return ApplicationEntity(
       id: dto.id,
       title: dto.title??'',
@@ -50,13 +51,13 @@ class ApplicationEntity {
 
   Map<String, dynamic> toJson() {
     return {
-      'id': this.id,
-      'title': this.title,
-      'description': this.description,
-      'type': this.type,
-      'car': this.car,
-      'status': this.status,
-      'creator': this.creator,
+      'id': id,
+      'title': title,
+      'description': description,
+      'type': type,
+      'car': car,
+      'status': status,
+      'creator': creator,
     };
   }
 
@@ -66,7 +67,7 @@ class ApplicationEntity {
       title: json['title'] as String,
       description: json['description'] as String,
       type: json['type'] as DocumentType,
-      car: json['carId'] as CarEntity,
+      car: json['carId'] as CarFrontendDto,
       status: json['status'] as ApplicationEvent,
       creator: json['creator'] as String,
     );
@@ -77,7 +78,7 @@ class ApplicationEntity {
     String? title,
     String? description,
     DocumentType? type,
-    CarEntity? car,
+    CarFrontendDto? car,
     String? creator,
     ApplicationEvent? status,
   }) {

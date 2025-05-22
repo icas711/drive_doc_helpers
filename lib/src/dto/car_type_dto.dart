@@ -24,9 +24,9 @@ class CarTypeDto extends Equatable{
 
   Map<String, dynamic> toJson() {
     return {
-      'id': this.id,
-      'title': this.title,
-      'externalId': this.externalId,
+      'id': id,
+      'title': title,
+      'externalId': externalId,
     };
   }
 

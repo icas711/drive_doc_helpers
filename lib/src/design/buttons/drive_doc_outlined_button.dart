@@ -33,7 +33,6 @@ class DriveDocOutlinedButton extends StatelessWidget {
   }) {
     return DriveDocOutlinedButton(
       onPressed: onPressed,
-      child: child,
       width: 200,
       // Reduced width for mini button
       height: 40,
@@ -41,6 +40,7 @@ class DriveDocOutlinedButton extends StatelessWidget {
       borderColor: borderColor,
       borderRadius: borderRadius,
       border: border,
+      child: child,
     );
   }
 

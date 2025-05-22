@@ -53,16 +53,16 @@ class User {
 
   @override
   String toString() {
-    return '$title';
+    return title;
   }
 
   Map<String, dynamic> toJson() {
     return {
-      'id': this.id,
-      'title': this.title,
-      'externalId': this.externalId,
-      'email': this.email,
-      'role': this.role,
+      'id': id,
+      'title': title,
+      'externalId': externalId,
+      'email': email,
+      'role': role,
     };
   }
 

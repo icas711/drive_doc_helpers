@@ -8,7 +8,7 @@ extension ApplicationEntityExt on ApplicationEntity{
         title: title,
         description:description,
         documentTypeId: type,
-        car: car,
+        car: car!,
         events: [status!],
       );
 }

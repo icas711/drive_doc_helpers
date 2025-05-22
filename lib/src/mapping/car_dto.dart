@@ -7,8 +7,7 @@ extension CarDtoExt on CarDto {
     return CarEntity(
       id: id,
       title: title,
-      type: types.firstWhere((e) => e.id == carTypeId,
-          orElse: () => CarTypeDto(id: '', title: carTypeId ?? '')),
+      type: carTypeId,
       registrationPlate: registrationPlate ?? 'Без номерв',
     );
   }

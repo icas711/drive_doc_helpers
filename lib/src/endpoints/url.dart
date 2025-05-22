@@ -1,8 +1,8 @@
 import '../dto/document_types.dart';
 import '../route_enums/route_utils.dart';
+
 enum Url {
-  dev(
-      'https://check-car.itjn.ru:8079/realms/drive-doc/protocol/openid-connect/token',
+  dev('https://check-car.itjn.ru:8079/realms/drive-doc/protocol/openid-connect/token',
       'https://check-car.itjn.ru:8090'),
   prod(
       'https://check-car.itjn.ru:8079/realms/drive-doc/protocol/openid-connect/token',
@@ -20,26 +20,31 @@ enum Url {
 
 enum EndPointType {
   acts('/completionActs/', '/details/out', ''),
+  allowedEmails('/allowedEmails/', '', ''),
+  applicationsFrontend('/applications/frontend/', '', ''),
+  applications('/applications/', '', ''),
+  applicationEvents('/applicationEvents/?parentId=', '', ''),
+  applicationDocuments('/applicationDocuments/?parentId=', '', ''),
+  applicationExecutors('/applicationUsers/?parentId=', '', ''),
+  cars('/cars/', '', ''),
+  carType('/carTypes/', '', ''),
+  carFrontend('/cars/frontend/', '', ''),
   checkLists('/checkLists/', '/details/out', ''),
   checkListsFrontend('/checkLists/frontend/', '/details/out', ''),
+  customer('/cars/customer/', '', ''),
+  customers('/customers/', '', ''),
   users('/users/', '', ''),
   userInvitations('/userInvitations/', '/send', ''),
   validation('/invitations/', '/confirm?confirmationCode=', ''),
-  cars('/cars/', '', ''),
-  carType('/carTypes/','',''),
-  carFrontend('/cars/frontend/','',''),
   templates('/templates/', '/files', '/data'),
   events('/checkListEvents?parentId=', '', ''),
   detailsChecklists('/checkLists/', '/files', '/data'),
   detailsActs('/completionActs/', '/files', '/data'),
   detailsIncidents('/incidents/', '/files', '/data'),
+  organizationsRegistration('/invitations/', '', ''),
   reports('/reports/', '/files', '/data'),
-  applications('/applications/', '', ''),
   documentTypes('/documentTypes/', '', ''),
-  applicationsFrontend('/applications/frontend/', '', ''),
-  applicationEvents('/applicationEvents/?parentId=', '', ''),
-  applicationDocuments('/applicationDocuments/?parentId=', '', ''),
-  applicationExecutors('/applicationUsers/?parentId=', '', ''),//
+  packageInfo('/releases/', '', ''),
   lastStatus('/applications/frontend/search/byLastStatus?lastStatus=', '', ''),
   incidents('/incidents/', '/details/out', ''),
   organization('/organizations/', '', ''),
@@ -95,13 +100,13 @@ extension EndPointTypeExt on EndPointType {
     }
   }
 
-  PAGES get pages {
+  PagesEnum get pages {
     if (this == EndPointType.checkLists) {
-      return PAGES.checklist;
+      return PagesEnum.checklist;
     } else if (this == EndPointType.acts) {
-      return PAGES.act;
+      return PagesEnum.act;
     } else {
-      return PAGES.incidents;
+      return PagesEnum.incidents;
     }
   }
 
@@ -196,13 +201,16 @@ extension EndPointTypeExt on EndPointType {
       return 'saved/noname';
     }
   }
-  DocumentType toDocumentType(){
-    if (this == EndPointType.checkLists) {
-      return DocumentType(id: '861b41b5-2c51-43d6-9452-9b780e4f75ba', title: 'Чек-лист');
-    } else if (this == EndPointType.acts) {
-      return DocumentType(id: '79c6c876-041d-494c-a88d-a092c11cfcd0', title: 'Акт');
-    } else
-      return DocumentType(id: 'fcb91472-e74e-424e-a3e0-416edb1c02f0', title: 'Инцидент');
 
+  DocumentType toDocumentType() {
+    if (this == EndPointType.checkLists) {
+      return DocumentType(
+          id: '861b41b5-2c51-43d6-9452-9b780e4f75ba', title: 'Чек-лист');
+    } else if (this == EndPointType.acts) {
+      return DocumentType(
+          id: '79c6c876-041d-494c-a88d-a092c11cfcd0', title: 'Акт');
+    } else
+      return DocumentType(
+          id: 'fcb91472-e74e-424e-a3e0-416edb1c02f0', title: 'Инцидент');
   }
 }

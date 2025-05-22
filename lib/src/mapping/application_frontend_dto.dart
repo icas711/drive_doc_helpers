@@ -1,9 +1,9 @@
+
 import '../dto/application_event.dart';
 import '../dto/application_frontend_dto.dart';
-import '../dto/car_type_dto.dart';
+import '../dto/car_frontend_dto.dart';
 import '../dto/document_types.dart';
 import '../model/application_frontend_entity.dart';
-import '../model/car_entity.dart';
 import '../model/users.dart';
 
 import 'package:collection/collection.dart';
@@ -23,11 +23,12 @@ extension ApplicationFrontendDtoExt on ApplicationFrontendDto {
       description: description,
       documentTypeId:
           documentTypes.firstWhereOrNull((e) => e.id == documentTypeId),
-      car: CarEntity(
+      car: CarFrontendDto(
           id: carId ?? '',
           title: carTitle ?? '',
-          type: CarTypeDto.init(),
-          registrationPlate: carRegistrationPlate ?? ''),
+          registrationPlate: carRegistrationPlate ?? ''
+          
+          ),
       documents: [],
       creator: User(
           id: creatorId ?? '',

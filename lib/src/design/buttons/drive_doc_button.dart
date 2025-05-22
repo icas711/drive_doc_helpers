@@ -32,12 +32,12 @@ class DriveDocButton extends StatelessWidget {
   }) {
     return DriveDocButton(
       onPressed: onPressed,
-      child: child,
       width: 200, // Reduced width for mini button
       height: 40, // Reduced height for mini button
       backgroundColor: backgroundColor,
       borderRadius: borderRadius,
       border: border,
+      child: child,
     );
   }
   factory DriveDocButton.loading({
@@ -75,7 +75,7 @@ class DriveDocButton extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(borderRadius),
               border: border,
-              color: backgroundColor,
+              color: backgroundColor
             ),
             child: ElevatedButton(
               onPressed: onPressed,

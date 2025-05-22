@@ -22,36 +22,61 @@ class DriveDocElevatedButton extends StatelessWidget {
     this.padding = const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
   });
 
-
   factory DriveDocElevatedButton.loading({
     required VoidCallback onPressed,
     required Widget child,
     required bool loading,
+    double? width,
+    double borderRadius=25,
   }) {
     return DriveDocElevatedButton(
       onPressed: onPressed,
+      width: width,
+      borderRadius: borderRadius,
       child: FittedBox(
         fit: BoxFit.none,
         child: loading
             ? CircularProgressIndicator.adaptive(
-          // backgroundColor: const Color(0XFF1C389F),
-          valueColor: const AlwaysStoppedAnimation<Color>(
-            Colors.white,
-          ),
-        )
+              padding: EdgeInsets.zero,
+              strokeWidth: 2,
+                // backgroundColor: const Color(0XFF1C389F),
+                valueColor: const AlwaysStoppedAnimation<Color>(
+                  Colors.white,
+                ),
+              )
             : child,
+      ),
+    );
+  }
+
+  factory DriveDocElevatedButton.large({
+    required VoidCallback onPressed,
+    required Widget child,
+    double borderRadius = 10,
+    EdgeInsetsGeometry padding =
+        const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+  }) {
+    return DriveDocElevatedButton(
+      onPressed: onPressed,
+      borderRadius: borderRadius,
+      padding: padding,
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          final bool isTablet = constraints.maxWidth >= 600;
+          final double maxWidth = constraints.maxWidth * (isTablet ? 0.6 : 0.9);
+          return SizedBox(
+            width: maxWidth,
+            child: child,
+          );
+        },
       ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return DecoratedBox(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(borderRadius),
-        border: border,
-        color: backgroundColor,
-      ),
+    return SizedBox(
+      width: width,
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
@@ -61,7 +86,7 @@ class DriveDocElevatedButton extends StatelessWidget {
           foregroundColor: Colors.white,
         ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 10.0,horizontal: 25),
+          padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 25),
           child: child,
         ),
       ),

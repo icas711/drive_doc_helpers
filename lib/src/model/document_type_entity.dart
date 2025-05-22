@@ -17,8 +17,8 @@ class DocumentTypeEntity {
 
   Map<String, dynamic> toJson() {
     return {
-      'id': this.id,
-      'endPointType': this.endPointType.index,
+      'id': id,
+      'endPointType': endPointType.index,
     };
   }
 

@@ -45,6 +45,6 @@ class CarDto with _$CarDto {
   }
   @override
   String toString() {
-    return '$title ${registrationPlate}';
+    return '$title $registrationPlate';
   }
 }

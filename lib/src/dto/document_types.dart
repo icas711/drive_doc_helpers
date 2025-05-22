@@ -4,7 +4,7 @@ class DocumentTypes {
   const DocumentTypes({required this.types});
 
   factory DocumentTypes.fromList(List list){
-    return DocumentTypes(types: list.map((e)=>DocumentType.fromJson(e)).toList()??[]);
+    return DocumentTypes(types: list.map((e)=>DocumentType.fromJson(e)).toList());
   }
 }
 

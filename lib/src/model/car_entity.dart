@@ -1,4 +1,3 @@
-import 'package:network/src/dto/car_type_dto.dart';
 
 class CarEntityList{
   final List<CarEntity> cars;
@@ -11,23 +10,26 @@ class CarEntityList{
 class CarEntity {
   final String id;
   final String title;
-  final CarTypeDto type;
+  final String? type;
+  final String? customer;
   final String registrationPlate;
 
   CarEntity({
     required this.id,
     required this.title,
-    required this.type,
+    this.type,
     required this.registrationPlate,
+    this.customer,
   });
 
-  factory CarEntity.init()=>CarEntity(id: '', title: '', type: CarTypeDto.init(), registrationPlate:'');
+  factory CarEntity.init()=>CarEntity(id: '', title: '', registrationPlate:'');
   Map<String, dynamic> toJson() {
     return {
       'id': id,
       'title': title,
-      'type': type.toJson(),
+      'type': type,
       'registrationPlate': registrationPlate,
+      'customer':customer,
     };
   }
 
@@ -35,12 +37,26 @@ class CarEntity {
     return CarEntity(
       id: map['id'] as String,
       title: map['title'] as String,
-      type: CarTypeDto.fromJson(map['type']),
+      type: map['type'] as String,
       registrationPlate: map['registrationPlate'] as String,
+      customer: map['customer'] as String,
     );
   }
   @override
   String toString() {
-    return '$title ${type.title} ${registrationPlate}';
+    return '$title $type $registrationPlate';
+  }
+
+  @override
+  bool operator ==(covariant CarEntity other) {
+    if (identical(this, other)) return true;
+  
+    return 
+      other.id == id;
+  }
+
+  @override
+  int get hashCode {
+    return id.hashCode;
   }
 }

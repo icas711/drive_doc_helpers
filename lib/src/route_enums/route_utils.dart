@@ -1,172 +1,78 @@
-enum PAGES {
-  splash,
-  login,
-  home,
-  cars,
-  carView,
-  checklist,
-  checklistAdd,
-  act,
-  actAdd,
-  template,
-  reports,
-  error,
-  theme,
-  addUser,
-  editUser,
-  editCar,
-  actAffilation,
-  incidents,
-  incidentAdd,
-  checklistAffilation,
-  requests,
-  addTask,
-  detailsApplication,
+enum PagesEnum {
+  act('/acts', 'Acts'),
+  actAdd('/actAdd', 'AddAct'),
+  actAffilation('act-affilation', 'ActAffilation'),
+  applicationCreate('/application-create','ApplicationCreate'),
+  addTask('/add-request', 'AddTask'),
+  addUser('add-user', 'AddUser'),
+  cars('/cars', 'Cars'),
+  carView('car-view', 'CarView'),
+  carsDebugEditPage('car-debug-edit', 'CarDebugEdit'),
+  checklist('/checklist', 'Checklist'),
+  checklistAdd('/checklistAdd', 'ChecklistAdd'),
+  checklistAffilation('checklist-affilation', 'ChecklistAffilation'),
+  detailsApplication('/detailsApplication/id=', 'DetailsApplication'),
+  editUser('edit-user', 'EditUser'),
+  editCar('edit-car', 'EditCar'),
+  error('/error', 'Error'),
+  home('/home', 'Home'),
+  incidents('/incidents', 'Incidents'),
+  incidentAdd('/incidentAdd', 'IncidentAdd'),
+   login('/login', 'Login'),
+  reports('/reports', 'Reports'),
+  applications('/applications', 'Applications'),
+  splash('/', 'Splash'),
+  template('/maket', 'Maket'),
+  theme('/theme', 'Theme');
+
+  final String path;
+  final String name;
+  const PagesEnum(this.path,this.name);
 }
 
-extension AppPageExtension on PAGES {
-  String get path {
-    switch (this) {
-      case PAGES.splash:
-        return "/";
-      case PAGES.home:
-        return "/home";
-      case PAGES.login:
-        return "/login";
-      case PAGES.template:
-        return "/maket";
-      case PAGES.reports:
-        return "/reports";
-      case PAGES.checklist:
-        return "/checklist";
-      case PAGES.incidents:
-        return "/incidents";
-      case PAGES.checklistAdd:
-        return "/checklistAdd";
-        case PAGES.actAdd:
-      return "/actAdd";
-      case PAGES.incidentAdd:
-        return "/incidentAdd";
-      case PAGES.cars:
-        return "/cars";
-      case PAGES.carView:
-        return "car-view";
-      case PAGES.theme:
-        return "/theme";
-      case PAGES.act:
-        return "/acts";
-      case PAGES.addUser:
-        return "add-user";
-      case PAGES.editUser:
-        return "edit-user";
-      case PAGES.editCar:
-        return "edit-car";
-      case PAGES.actAffilation:
-        return "act-affilation";
-      case PAGES.checklistAffilation:
-        return "checklist-affilation";
-      case PAGES.error:
-        return "/error";
-      case PAGES.requests:
-        return "/requests";
-      case PAGES.addTask:
-        return "/add-request";
-      case PAGES.detailsApplication:
-        return "/detailsApplication/id=";
-
-    }
-  }
-
-  String get name {
-    switch (this) {
-      case PAGES.splash:
-        return "Splash";
-      case PAGES.home:
-        return "Home";
-      case PAGES.login:
-        return "Login";
-      case PAGES.cars:
-        return "Cars";
-      case PAGES.carView:
-        return "CarView";
-      case PAGES.reports:
-        return "Reports";
-      case PAGES.checklist:
-        return "Checklist";
-      case PAGES.incidents:
-        return "Incidents";
-      case PAGES.incidentAdd:
-        return "IncidentAdd";
-      case PAGES.template:
-        return "Maket";
-      case PAGES.theme:
-        return "Theme";
-      case PAGES.act:
-        return "Acts";
-      case PAGES.addUser:
-        return "AddUser";
-      case PAGES.editUser:
-        return "EditUser";
-      case PAGES.editCar:
-        return "EditCar";
-      case PAGES.actAffilation:
-        return "ActAffilation";
-      case PAGES.checklistAffilation:
-        return "ChecklistAffilation";
-      case PAGES.error:
-        return "Error";
-      case PAGES.requests:
-        return "Requests";
-      case PAGES.addTask:
-        return "AddTask";
-      case PAGES.detailsApplication:
-        return "DetailsApplication";
-      default:
-        return "Main";
-    }
-  }
-
+extension AppPageExtension on PagesEnum {
+ 
   String get title {
     switch (this) {
-      case PAGES.splash:
+      case PagesEnum.splash:
         return "Запуск приложения";
-      case PAGES.home:
+      case PagesEnum.home:
         return "Организация";
-      case PAGES.login:
+      case PagesEnum.login:
         return "Авторизация";
-      case PAGES.cars:
+      case PagesEnum.cars:
         return "Транспортные средства";
-      case PAGES.carView:
+      case PagesEnum.carView:
         return "Просмотр";
-      case PAGES.reports:
+      case PagesEnum.reports:
         return "Отчеты";
-      case PAGES.checklist:
+      case PagesEnum.checklist:
         return "Чеклист";
-      case PAGES.incidents:
+      case PagesEnum.incidents:
         return "Инциденты";
-      case PAGES.incidentAdd:
+      case PagesEnum.incidentAdd:
         return "Добавить инцидент";
-      case PAGES.template:
+      case PagesEnum.template:
         return "Макет";
-      case PAGES.theme:
+      case PagesEnum.theme:
         return "Тема";
-      case PAGES.act:
+      case PagesEnum.act:
         return "Акты";
-      case PAGES.addUser:
+      case PagesEnum.addUser:
         return "Добавление пользователя";
-      case PAGES.editUser:
+      case PagesEnum.editUser:
         return "Редактирование пользователя";
-      case PAGES.actAffilation:
+      case PagesEnum.actAffilation:
         return "Принадлежность акта";
-      case PAGES.checklistAffilation:
+      case PagesEnum.checklistAffilation:
         return "Принадлежность чек-листа";
-      case PAGES.editCar:
+      case PagesEnum.editCar:
         return "Изменение авто";
-      case PAGES.requests:
+      case PagesEnum.applications:
         return "Заявки";
-      case PAGES.addTask:
+      case PagesEnum.addTask:
         return "Создать заявку";
-      case PAGES.error:
+      case PagesEnum.error:
         return "Error";
       default:
         return "Main";

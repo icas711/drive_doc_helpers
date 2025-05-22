@@ -1,6 +1,6 @@
 import '../dto/application_event.dart';
+import '../dto/car_frontend_dto.dart';
 import '../dto/document_types.dart';
-import 'car_entity.dart';
 import 'document_type_entity.dart';
 import 'users.dart';
 
@@ -9,7 +9,7 @@ class ApplicationFrontendEntity {
   final String title;
   final String? description;
   final DocumentType? documentTypeId;
-  final CarEntity? car;
+  final CarFrontendDto car;
   final List<DocumentTypeEntity>? documents;
   final List<ApplicationEvent>? events;
   final User? creator;
@@ -20,7 +20,7 @@ class ApplicationFrontendEntity {
     required this.title,
     this.description,
     this.documentTypeId,
-    this.car,
+    required this.car,
     this.documents,
     this.events,
     this.creator,
@@ -28,11 +28,11 @@ class ApplicationFrontendEntity {
   });
 
   factory ApplicationFrontendEntity.init() {
-    return const ApplicationFrontendEntity(
+    return  ApplicationFrontendEntity(
       id: '',
       title: '',
       documentTypeId: null,
-      car: null,
+      car: CarFrontendDto.init(),
       description: null,
       documents: [],
       creator: null,
@@ -46,7 +46,7 @@ class ApplicationFrontendEntity {
       'title': title,
       'description': description,
       'templateId': documentTypeId?.toJson(),
-      'car': car?.toJson(),
+      'car': car.toJson(),
       'documents': documents,
       'creator': creator?.toJson(),
       'events': events,
@@ -58,9 +58,9 @@ class ApplicationFrontendEntity {
     return ApplicationFrontendEntity(
       id: json['id'] as String,
       title: json['title'] as String,
-      description: json['description'] ?? null,
+      description: json['description'],
       documentTypeId: json['documentTypeId'] as DocumentType,
-      car: json['car'] as CarEntity,
+      car: json['car'] as CarFrontendDto,
       documents: json['documents'] as List<DocumentTypeEntity>,
       events: json['events'] as List<ApplicationEvent>,
       creator: json['creator'] as User,
@@ -80,7 +80,7 @@ class ApplicationFrontendEntity {
     String? title,
     String? description,
     DocumentType? documentTypeId,
-    CarEntity? car,
+    CarFrontendDto? car,
     List<DocumentTypeEntity>? documents,
     List<ApplicationEvent>? events,
     User? creator,

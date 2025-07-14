@@ -8,10 +8,12 @@ export 'src/dto/cars.dart';
 export 'src/dto/customer_dto.dart';
 export 'src/dto/date_time_converter.dart';
 export 'src/dto/document_types.dart';
+export 'src/dto/document_frontend_dto.dart';
 export 'src/dto/package_info_entity.dart';
 export 'src/dto/reports.dart';
 export 'src/dto/server_files.dart';
 export 'src/dto/template_dto.dart';
+
 
 export 'src/endpoints/url.dart';
 

@@ -1,6 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
 
+import 'dart:convert';
+
 class CarsFrontendDtoList {
   final List<CarFrontendDto> cars;
 
@@ -9,7 +11,7 @@ class CarsFrontendDtoList {
   });
 
   factory CarsFrontendDtoList.fromList(List list) => CarsFrontendDtoList(
-        cars: list.map((e) => CarFrontendDto.fromJson(e)).toList(),
+        cars: list.map((e) => CarFrontendDto.fromJson((e))).toList(),
       );
 }
 

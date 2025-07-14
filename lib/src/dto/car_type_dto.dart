@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:equatable/equatable.dart';
 
 class CarTypeDtoList{
@@ -5,7 +7,7 @@ class CarTypeDtoList{
   const CarTypeDtoList({required this.types});
 
   factory CarTypeDtoList.fromList(List list)=>
-      CarTypeDtoList(types: list.map((e)=>CarTypeDto.fromJson(e)).toList());
+      CarTypeDtoList(types: list.map((e)=>CarTypeDto.fromJson((e))).toList());
 
 }
 

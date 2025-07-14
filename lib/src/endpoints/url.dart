@@ -20,8 +20,9 @@ enum Url {
 
 enum EndPointType {
   acts('/completionActs/', '/details/out', ''),
+  actsFrontend('/frontend/completionActs', '', ''),
   allowedEmails('/allowedEmails/', '', ''),
-  applicationsFrontend('/applications/frontend/', '', ''),
+  applicationsFrontend('/frontend/applications/', '', ''),
   applications('/applications/', '', ''),
   applicationEvents('/applicationEvents/?parentId=', '', ''),
   applicationDocuments('/applicationDocuments/?parentId=', '', ''),
@@ -30,14 +31,16 @@ enum EndPointType {
   carType('/carTypes/', '', ''),
   carFrontend('/cars/frontend/', '', ''),
   checkLists('/checkLists/', '/details/out', ''),
-  checkListsFrontend('/checkLists/frontend/', '/details/out', ''),
+  checkListsFrontend('/frontend/checkLists', '', ''),
   customer('/cars/customer/', '', ''),
   customers('/customers/', '', ''),
+  notification('','',''),
   users('/users/', '', ''),
   userInvitations('/userInvitations/', '/send', ''),
   validation('/invitations/', '/confirm?confirmationCode=', ''),
   templates('/templates/', '/files', '/data'),
   events('/checkListEvents?parentId=', '', ''),
+  details('', '', ''), //Для локального сохранения данных документов
   detailsChecklists('/checkLists/', '/files', '/data'),
   detailsActs('/completionActs/', '/files', '/data'),
   detailsIncidents('/incidents/', '/files', '/data'),
@@ -47,6 +50,7 @@ enum EndPointType {
   packageInfo('/releases/', '', ''),
   lastStatus('/applications/frontend/search/byLastStatus?lastStatus=', '', ''),
   incidents('/incidents/', '/details/out', ''),
+  incidentsFrontend('/frontend/incidents', '', ''),
   organization('/organizations/', '', ''),
   serverFile('/', '', '');
 
@@ -63,6 +67,15 @@ extension EndPointTypeExt on EndPointType {
       return 'Чек-лист проверки установленного оборудования';
     } else if (this == EndPointType.acts) {
       return 'Акт установки и проверки установленного оборудования';
+    } else {
+      return 'Акт инцидентов и происшествий';
+    }
+  }
+   String get shortTitle {
+    if (this == EndPointType.checkLists) {
+      return 'Чек-лист оборудования';
+    } else if (this == EndPointType.acts) {
+      return 'Акт установки и проверки';
     } else {
       return 'Акт инцидентов и происшествий';
     }
@@ -151,6 +164,8 @@ extension EndPointTypeExt on EndPointType {
       return 'CARTYPES';
     } else if (this == EndPointType.serverFile) {
       return 'SERVERFILES';
+    } else if (this == EndPointType.details) {
+      return 'DETAILSFILES';
     } else {
       return 'NONAME';
     }
@@ -195,6 +210,8 @@ extension EndPointTypeExt on EndPointType {
       return 'saved/reports';
     } else if (this == EndPointType.carType) {
       return 'saved/carTypes';
+    } else if (this == EndPointType.details) {
+      return 'saved/details';
     } else if (this == EndPointType.serverFile) {
       return 'saved/file';
     } else {
